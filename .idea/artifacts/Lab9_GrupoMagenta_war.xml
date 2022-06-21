@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="Lab9_GrupoMagenta:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>Lab9_GrupoMagenta</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="Lab9_GrupoMagenta-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="Lab9_GrupoMagenta:war exploded" />
+    </root>
+  </artifact>
+</component>
