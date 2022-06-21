@@ -1,9 +1,18 @@
 package com.example.lab9_grupomagenta.Beans;
 
 public class BVariante {
+    private int idVirus;
     private int idVarianteVirus;
     private String nombre;
     private double gradoInfectividad;
+
+    public int getIdVirus() {
+        return idVirus;
+    }
+
+    public void setIdVirus(int idVirus) {
+        this.idVirus = idVirus;
+    }
 
     public int getIdVarianteVirus() {
         return idVarianteVirus;
