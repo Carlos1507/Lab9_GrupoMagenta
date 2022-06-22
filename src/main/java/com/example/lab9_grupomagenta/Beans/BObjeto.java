@@ -4,8 +4,17 @@ public class BObjeto {
     private int idObjeto;
     private String nombre;
     private double masa;
-    private boolean vacuna;
+    private int vacuna;
     private int cantidad;
+    private int idVacuna;
+
+    public int getIdVacuna() {
+        return idVacuna;
+    }
+
+    public void setIdVacuna(int idVacuna) {
+        this.idVacuna = idVacuna;
+    }
 
     public int getIdObjeto() {
         return idObjeto;
@@ -31,11 +40,11 @@ public class BObjeto {
         this.masa = masa;
     }
 
-    public boolean isVacuna() {
+    public int getVacuna() {
         return vacuna;
     }
 
-    public void setVacuna(boolean vacuna) {
+    public void setVacuna(int vacuna) {
         this.vacuna = vacuna;
     }
 
