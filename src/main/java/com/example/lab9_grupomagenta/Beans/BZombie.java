@@ -1,9 +1,11 @@
 package com.example.lab9_grupomagenta.Beans;
 
-public class BZombie {
+public class BZombie extends BHumano {
     private int idZombie;
     private int victimas;
     private String tiempoInfectado;
+    private String tipoZombie;
+    private String varianteVirus;
 
     public int getIdZombie() {
         return idZombie;
@@ -19,6 +21,22 @@ public class BZombie {
 
     public void setVictimas(int victimas) {
         this.victimas = victimas;
+    }
+
+    public String getTipoZombie() {
+        return tipoZombie;
+    }
+
+    public void setTipoZombie(String tipoZombie) {
+        this.tipoZombie = tipoZombie;
+    }
+
+    public String getVarianteVirus() {
+        return varianteVirus;
+    }
+
+    public void setVarianteVirus(String varianteVirus) {
+        this.varianteVirus = varianteVirus;
     }
 
     public String getTiempoInfectado() {
