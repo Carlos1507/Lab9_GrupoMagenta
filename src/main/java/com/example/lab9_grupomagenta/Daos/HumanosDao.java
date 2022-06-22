@@ -23,6 +23,7 @@ public class HumanosDao extends BaseDao{
                 humano.setApellido(rs.getString(3));
                 humano.setSexo(rs.getString(4));
                 humano.setEstado(rs.getString(5));
+                humano.setHabilitado(rs.getBoolean(6));
                 listaHum.add(humano);
             }
         } catch (SQLException e){

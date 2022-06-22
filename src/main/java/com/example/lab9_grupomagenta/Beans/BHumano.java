@@ -1,11 +1,20 @@
 package com.example.lab9_grupomagenta.Beans;
 
 public class BHumano {
+    private String numIdentificacion;
     private String nombre;
     private String apellido;
     private String sexo;
-    private String numIdentificacion;
     private String estado;
+    private boolean habilitado;
+
+    public String getNumIdentificacion() {
+        return numIdentificacion;
+    }
+
+    public void setNumIdentificacion(String numIdentificacion) {
+        this.numIdentificacion = numIdentificacion;
+    }
 
     public String getNombre() {
         return nombre;
@@ -31,14 +40,6 @@ public class BHumano {
         this.sexo = sexo;
     }
 
-    public String getNumIdentificacion() {
-        return numIdentificacion;
-    }
-
-    public void setNumIdentificacion(String numIdentificacion) {
-        this.numIdentificacion = numIdentificacion;
-    }
-
     public String getEstado() {
         return estado;
     }
@@ -46,4 +47,13 @@ public class BHumano {
     public void setEstado(String estado) {
         this.estado = estado;
     }
+
+    public boolean isHabilitado() {
+        return habilitado;
+    }
+
+    public void setHabilitado(boolean habilitado) {
+        this.habilitado = habilitado;
+    }
 }
+

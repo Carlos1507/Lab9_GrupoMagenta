@@ -10,7 +10,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="Lab9_GrupoMagenta" target="1.8" />
+      <module name="Lab9_GrupoMagenta" target="14" />
     </bytecodeTargetLevel>
   </component>
 </project>

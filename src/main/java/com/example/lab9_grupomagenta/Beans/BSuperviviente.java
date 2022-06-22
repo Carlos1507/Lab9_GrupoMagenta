@@ -1,18 +1,19 @@
 package com.example.lab9_grupomagenta.Beans;
 
-public class BSuperviviente {
-    private int codigo;
+public class BSuperviviente extends BHumano{
+    private int idSuperviviente;
     private double peso;
     private double fuerza;
-    private String pareja;
+    private BHumano pareja;
+    private String numIdentificacion;
     private double pesoCargado;
 
-    public int getCodigo() {
-        return codigo;
+    public int getIdSuperviviente() {
+        return idSuperviviente;
     }
 
-    public void setCodigo(int codigo) {
-        this.codigo = codigo;
+    public void setIdSuperviviente(int idSuperviviente) {
+        this.idSuperviviente = idSuperviviente;
     }
 
     public double getPeso() {
@@ -31,12 +32,22 @@ public class BSuperviviente {
         this.fuerza = fuerza;
     }
 
-    public String getPareja() {
+    public BHumano getPareja() {
         return pareja;
     }
 
-    public void setPareja(String pareja) {
+    public void setPareja(BHumano pareja) {
         this.pareja = pareja;
+    }
+
+    @Override
+    public String getNumIdentificacion() {
+        return numIdentificacion;
+    }
+
+    @Override
+    public void setNumIdentificacion(String numIdentificacion) {
+        this.numIdentificacion = numIdentificacion;
     }
 
     public double getPesoCargado() {

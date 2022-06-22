@@ -23,18 +23,15 @@
             <th>SEXO</th>
             <th>ESTADO</th>
             </thead>
-            <%
-                for (BHumano humano : listaHumanos) {
-            %>
+            <% for (BHumano humano : listaHumanos) { %>
+            <%  if(humano.isHabilitado()){ %>
             <tr>
                 <td><%=humano.getNumIdentificacion()%></td>
                 <td><%=humano.getNombre()%> <%=humano.getApellido()%></td>
                 <td><%=humano.getSexo()%></td>
                 <td><%=humano.getEstado()%></td>
             </tr>
-            <%
-                }
-            %>
+            <% }} %>
         </table>
     </div>
 
