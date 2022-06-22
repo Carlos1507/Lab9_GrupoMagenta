@@ -126,7 +126,10 @@ public class ZombiesDao extends BaseDao{
              ResultSet rs = stmt.executeQuery(sql);) {
             while(rs.next()){
                 String sexo = rs.getString(1);
-                String cantidad = rs.getString(2);
+                String cantidad = "0";
+                if(rs.getString(2)!= null) {
+                    cantidad = rs.getString(2);
+                }
                 hashMap.put(sexo,cantidad);
             }
 
@@ -144,7 +147,10 @@ public class ZombiesDao extends BaseDao{
              ResultSet rs = stmt.executeQuery(sql);) {
             while(rs.next()){
                 String tipoZombie = new String(rs.getString(1).getBytes(StandardCharsets.UTF_8), StandardCharsets.UTF_8);
-                String promedio = rs.getString(2);
+                String promedio = "0";
+                if(rs.getString(2)!=null){
+                    promedio = rs.getString(2);
+                }
                 hashMap.put(tipoZombie,promedio);
             }
 
