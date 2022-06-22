@@ -1,22 +1,31 @@
 package com.example.lab9_grupomagenta.Beans;
 
 public class BEfectividad {
-    private int idEfectividad;
-    private double efectividad;
+    private int idVacuna;
+    private int idTipoZombie;
+    private double porcentaje;
 
-    public int getIdEfectividad() {
-        return idEfectividad;
+    public int getIdVacuna() {
+        return idVacuna;
     }
 
-    public void setIdEfectividad(int idEfectividad) {
-        this.idEfectividad = idEfectividad;
+    public void setIdVacuna(int idVacuna) {
+        this.idVacuna = idVacuna;
     }
 
-    public double getEfectividad() {
-        return efectividad;
+    public int getIdTipoZombie() {
+        return idTipoZombie;
     }
 
-    public void setEfectividad(double efectividad) {
-        this.efectividad = efectividad;
+    public void setIdTipoZombie(int idTipoZombie) {
+        this.idTipoZombie = idTipoZombie;
+    }
+
+    public double getPorcentaje() {
+        return porcentaje;
+    }
+
+    public void setPorcentaje(double porcentaje) {
+        this.porcentaje = porcentaje;
     }
 }

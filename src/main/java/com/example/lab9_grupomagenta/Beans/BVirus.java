@@ -4,6 +4,8 @@ public class BVirus {
     private int idVirus;
     private String nombre;
     private int casosEncontrados;
+    private BVariante bVariante;
+
 
     public int getIdVirus() {
         return idVirus;
@@ -27,5 +29,13 @@ public class BVirus {
 
     public void setCasosEncontrados(int casosEncontrados) {
         this.casosEncontrados = casosEncontrados;
+    }
+
+    public BVariante getbVariante() {
+        return bVariante;
+    }
+
+    public void setbVariante(BVariante bVariante) {
+        this.bVariante = bVariante;
     }
 }
