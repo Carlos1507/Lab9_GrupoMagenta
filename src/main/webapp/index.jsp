@@ -11,99 +11,40 @@
         <jsp:param name="page" value=""/>
     </jsp:include>
     <div class="pb-5 pt-4 px-3 titlecolor d-flex justify-content-between align-items-center">
-        <div class="col-lg-6">
-            <h1 class='text-light'>Bienvenido, este es un ejemplo de tabla:</h1>
+        <div class="col-lg-10">
+            <h1 class='text-light'>Apocalipis Zombie: Listos para una nueva aventura sin precendentes</h1>
         </div>
     </div>
-    <div class="tabla">
-        <table class="table table-dark table-transparent table-hover">
-            <thead>
-            <tr>
-                <th>#</th>
-                <th>NOMBRE</th>
-                <th>ROL</th>
-                <th>CORREO</th>
-            </tr>
-            </thead>
 
-            <tbody>
-            <tr>
-                <td>1
-                </td>
-                <td>Stuardo Lucho
-                </td>
-                <td>Profesor
-                </td>
-                <td>stuardo.lucho@pucp.edu.pe
-                </td>
-            </tr>
-
-            <tr>
-                <td>2
-                </td>
-                <td>Oscar Diaz
-                </td>
-                <td>JP
-                </td>
-                <td>diaz.oa@pucp.edu.pe
-                </td>
-            </tr>
-
-            <tr>
-                <td>3
-                </td>
-                <td>Mario Gustavo
-                </td>
-                <td>JP
-                </td>
-                <td>a2015@pucp.edu.pe
-                </td>
-            </tr>
-
-            <tr>
-                <td>4
-                </td>
-                <td>Rodrigo Adauto
-                </td>
-                <td>JP
-                </td>
-                <td>a20160679@pucp.edu.pe
-                </td>
-            </tr>
-            <tr>
-                <td>4
-                </td>
-                <td>Álvaro Burga
-                </td>
-                <td>JP
-                </td>
-                <td>a20160679@pucp.edu.pe
-                </td>
-            </tr>
-            <tr>
-                <td>4
-                </td>
-                <td>Josué López
-                </td>
-                <td>JP
-                </td>
-                <td>a20160679@pucp.edu.pe
-                </td>
-            </tr>
-            <tr>
-                <td>4
-                </td>
-                <td> Alejandro Macedo
-                </td>
-                <td>JP
-                </td>
-                <td>a20160679@pucp.edu.pe
-                </td>
-            </tr>
-
-            </tbody>
-        </table>
+    <center>
+    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" style="width: 85%">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="static/zombiehand.png" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="static/zombiehand.png" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="static/zombiehand.png" class="d-block w-100" alt="...">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
     </div>
+        </center>
+
 </div>
 <jsp:include page="/static/scripts.jsp"/>
 </body>
