@@ -75,8 +75,11 @@
 
             <%}else{%>
             <div class="pb-5 pt-4 px-3 titlecolor">
-                <div class="col-lg-6">
+                <div class="col-lg-8">
                     <h1 class='text-light'>Efectividad por tipo de Zombie</h1>
+                </div>
+                <div class="col-lg-2">
+                    <a href="<%=request.getContextPath()%>/ObjetosServlet" class="btn btn-danger">Regresar</a>
                 </div>
             </div>
             <div class="tabla">

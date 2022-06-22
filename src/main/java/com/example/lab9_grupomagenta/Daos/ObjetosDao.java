@@ -189,7 +189,7 @@ public class ObjetosDao extends BaseDao{
     }
 
     public ArrayList<BEfectividad> buscarVacuna(String idVacuna){
-        ArrayList<BEfectividad> bEfectividad = null;
+        ArrayList<BEfectividad> listaEfectividad = new ArrayList<>();
 
         String sql = "select * from efectividad where idVacuna = ?;";
 
@@ -198,18 +198,17 @@ public class ObjetosDao extends BaseDao{
             pstmt.setInt(1,Integer.parseInt(idVacuna));
 
             try (ResultSet rs = pstmt.executeQuery();){
-                while (rs.next()){  //Si hay un resultado, lleno mi bjob, si no encuentro, se queda como null
-                    bEfectividad = new ArrayList<>();
-                    BEfectividad bEfectividad1 = new BEfectividad();
-                    bEfectividad1.setIdVacuna(rs.getInt(1));
-                    bEfectividad1.setIdTipoZombie(rs.getInt(2));
-                    bEfectividad1.setPorcentaje(rs.getDouble(3));
-                    bEfectividad.add(bEfectividad1);
+                while (rs.next()){
+                    BEfectividad bEfectividad = new BEfectividad();
+                    bEfectividad.setIdVacuna(rs.getInt(1));
+                    bEfectividad.setIdTipoZombie(rs.getInt(2));
+                    bEfectividad.setPorcentaje(rs.getDouble(3));
+                    listaEfectividad.add(bEfectividad);
                 }
             }
         } catch (SQLException e){
             e.printStackTrace();
         }
-        return bEfectividad;
+        return listaEfectividad;
     }
 }
