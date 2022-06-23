@@ -94,6 +94,35 @@ public class ObjetosServlet extends HttpServlet {
 
                 response.sendRedirect(request.getContextPath() + "/ObjetosServlet");
             }
+            case "actualizarNormal" -> {
+                String nombre = request.getParameter("nombre1");
+                String peso = request.getParameter("peso1");
+                String idObjeto = request.getParameter("id");
+                objetosDao.actualizar(nombre,peso,idObjeto);
+
+                response.sendRedirect(request.getContextPath() + "/ObjetosServlet");
+            }
+            case "actualizarVacuna" -> {
+                String nombre = request.getParameter("nombre");
+                String peso = request.getParameter("peso");
+                String ef1 = request.getParameter("ef1");
+                String ef2 = request.getParameter("ef2");
+                String ef3 = request.getParameter("ef3");
+                String ef4 = request.getParameter("ef4");
+                String ef5 = request.getParameter("ef5");
+
+                String idObjeto = request.getParameter("id");
+                String idVacuna = request.getParameter("id2");
+
+                objetosDao.actualizar(nombre,peso,idObjeto);
+                objetosDao.actualizarVacuna(idVacuna,1,ef1);
+                objetosDao.actualizarVacuna(idVacuna,2,ef2);
+                objetosDao.actualizarVacuna(idVacuna,3,ef3);
+                objetosDao.actualizarVacuna(idVacuna,4,ef4);
+                objetosDao.actualizarVacuna(idVacuna,5,ef5);
+
+                response.sendRedirect(request.getContextPath() + "/ObjetosServlet");
+            }
         }
     }
 }

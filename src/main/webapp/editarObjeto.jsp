@@ -17,7 +17,7 @@
             <%if(tipo == 0){%>
             <div class='container'>
                 <h1 class="mb-3" style="color: white">Editar objeto: normal</h1>
-                <form method="POST" action="<%=request.getContextPath()%>/ObjetosServlet?a=guardarNormal">
+                <form method="POST" action="<%=request.getContextPath()%>/ObjetosServlet?a=actualizarNormal&id=<%=bObjeto.getIdObjeto()%>">
                     <div class="mb-3" style="color: dodgerblue">
                         <label for="nombreNormal" class="form-label">Nombre</label>
                         <input type="text" class="form-control" name="nombre1" id="nombreNormal" value="<%=bObjeto.getNombre()%>">
@@ -32,14 +32,14 @@
                         <%}%>
                     </div>
                     <a href="<%=request.getContextPath()%>/ObjetosServlet" class="btn btn-danger">Regresar</a>
-                    <button type="submit" class="btn btn-primary">Crear Objeto</button>
+                    <button type="submit" class="btn btn-primary">Editar Objeto</button>
                 </form>
             </div>
 
             <%}else{%>
             <div class='container'>
                 <h1 class="mb-3" style="color: white">Editar objeto: vacuna</h1>
-                <form method="POST" action="<%=request.getContextPath()%>/ObjetosServlet?a=guardarVacuna">
+                <form method="POST" action="<%=request.getContextPath()%>/ObjetosServlet?a=actualizarVacuna&id=<%=bObjeto.getIdObjeto()%>&id2=<%=efectividad.get(0).getIdVacuna()%>">
                     <div class="mb-3" style="color: dodgerblue">
                         <label for="nombreVacuna" class="form-label">Nombre</label>
                         <input type="text" class="form-control" name="nombre" id="nombreVacuna" value="<%=bObjeto.getNombre()%>">
@@ -73,7 +73,7 @@
                         <input type="number" placeholder="porcentaje" name="ef5" id="efect5" min="0" max="100" step="0.001" value="<%=efectividad.get(4).getPorcentaje()%>">
                     </div>
                     <a href="<%=request.getContextPath()%>/ObjetosServlet" class="btn btn-danger">Regresar</a>
-                    <button type="submit" class="btn btn-primary">Crear Objeto</button>
+                    <button type="submit" class="btn btn-primary">Editar Objeto</button>
                 </form>
             </div>
             <%}%>
