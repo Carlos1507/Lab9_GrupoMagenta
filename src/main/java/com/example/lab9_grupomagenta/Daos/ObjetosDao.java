@@ -58,7 +58,7 @@ public class ObjetosDao extends BaseDao{
 
     public void guardarObjetoN(String nombre, double masa, int vacuna, int cantidad){
 
-        String sql = "INSERT INTO `lab9`.`objeto` (`nombre`, `masa`, `vacuna`, `cantidad`) VALUES (?, ?, ?, ?);";
+        String sql = "INSERT INTO `objeto` (`nombre`, `masa`, `vacuna`, `cantidad`) VALUES (?, ?, ?, ?);";
 
         try (Connection connection = this.obtenerConexion();
              PreparedStatement pstmt = connection.prepareStatement(sql);){
@@ -78,7 +78,7 @@ public class ObjetosDao extends BaseDao{
 
 
 
-        String sql = "INSERT INTO `lab9`.`objeto` (`nombre`, `masa`, `vacuna`, `cantidad`, `idVacuna`) VALUES (?, ?, ?, ?, ?);";
+        String sql = "INSERT INTO `objeto` (`nombre`, `masa`, `vacuna`, `cantidad`, `idVacuna`) VALUES (?, ?, ?, ?, ?);";
 
         try (Connection connection = this.obtenerConexion();
              PreparedStatement pstmt = connection.prepareStatement(sql);){
@@ -97,7 +97,7 @@ public class ObjetosDao extends BaseDao{
 
     public void crearVacuna(double masa){
 
-        String sql = "INSERT INTO `lab9`.`vacuna` (`peso`) VALUES (?);";
+        String sql = "INSERT INTO `vacuna` (`peso`) VALUES (?);";
 
         try (Connection connection = this.obtenerConexion();
              PreparedStatement pstmt = connection.prepareStatement(sql);){
@@ -132,7 +132,7 @@ public class ObjetosDao extends BaseDao{
 
     public void guardarEfectividad(int idVacuna,int idTipoZombie, double porcentaje){
 
-        String sql = "INSERT INTO `lab9`.`efectividad` (`idVacuna`, `idTipoZombie`, `porcentaje`) VALUES (?, ?, ?);";
+        String sql = "INSERT INTO `efectividad` (`idVacuna`, `idTipoZombie`, `porcentaje`) VALUES (?, ?, ?);";
 
         try (Connection connection = this.obtenerConexion();
              PreparedStatement pstmt = connection.prepareStatement(sql);){
