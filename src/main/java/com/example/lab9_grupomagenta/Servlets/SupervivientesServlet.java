@@ -33,7 +33,7 @@ public class SupervivientesServlet extends HttpServlet {
                     int idSuperv = Integer.parseInt(request.getParameter("id"));
                     BSuperviviente superviviente = supervivienteDao.obtenerSuperviviente(idSuperv);
                     if (superviviente!=null){
-                        request.setAttribute("superviviente", superviviente);
+                        request.setAttribute("supervSelect", superviviente);
                         request.setAttribute("listaSupervivientes", supervivienteDao.listarSupervivientes(null));
                         view = request.getRequestDispatcher("modificaSupervivientes.jsp");
                         view.forward(request, response);
@@ -46,19 +46,9 @@ public class SupervivientesServlet extends HttpServlet {
                 }
                 break;
             case "eliminar":
-                try {
-                    int idSuperv = Integer.parseInt(request.getParameter("id"));
-                    BSuperviviente superviviente = supervivienteDao.obtenerSuperviviente(idSuperv);
-                    if (superviviente!=null) {
-                        supervivienteDao.eliminarSuperviviente(idSuperv);
-                    }
-                }
-                catch (NumberFormatException ne){
-                    ne.printStackTrace();
-                }
-                finally {
-                    response.sendRedirect("SupervivientesServlet");
-                }
+                String numID = request.getParameter("id");
+                supervivienteDao.eliminarSuperviviente(numID);
+                response.sendRedirect("SupervivientesServlet");
                 break;
         }
     }
@@ -81,7 +71,6 @@ public class SupervivientesServlet extends HttpServlet {
                 break;
             case "guardar":
                 try{
-                    System.out.println(action);
                     String nombre = request.getParameter("nombre");
                     String apellido = request.getParameter("apellido");
                     double peso = Math.round(Float.parseFloat(request.getParameter("peso"))*100.0)/100.0;
@@ -90,22 +79,33 @@ public class SupervivientesServlet extends HttpServlet {
                     String pareja = request.getParameter("pareja");
                     String numIdentificacion = generarIDAlatoria();
                     int idPareja = supervivienteDao.obtenerIDSuperviviente(pareja);
-                    System.out.println("IDENTIF"+pareja);
-                    System.out.println("IDPARE"+idPareja);
                     supervivienteDao.crearSuperviviente(nombre, apellido, peso, fuerza, sexo, idPareja, numIdentificacion);
                     response.sendRedirect("SupervivientesServlet");
                 }catch (NumberFormatException e){
                     e.printStackTrace();
                 }
                 break;
+            case "actualizar":
+                String nombre=request.getParameter("nombre");
+                String apellido = request.getParameter("apellido");
+                double peso = Math.round(Float.parseFloat(request.getParameter("peso"))*100.0)/100.0;
+                double fuerza = Math.round(Float.parseFloat(request.getParameter("fuerza"))*100.0)/100.0;
+                String pareja = request.getParameter("pareja");
+
+
+                break;
         }
     }
     public String generarIDAlatoria(){
+        SupervivienteDao supDao = new SupervivienteDao();
         String codigo = "";
         Random ran = new Random();
         for(int i=0;i<11;i++){
             int x = ran.nextInt(10);
             codigo+=""+x+"";
+        }
+        if (supDao.identificacionUsada(codigo)) {
+            generarIDAlatoria();
         }
         return codigo;
     }

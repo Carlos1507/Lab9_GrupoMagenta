@@ -90,8 +90,8 @@ public class ZombiesDao extends BaseDao{
     }
 
     public void crearZombie(String nIdentificacion, String nombre, String apellido,String sexo, String idTipoZombie, String idVarianteVirus){
-        String sql1 = "INSERT INTO `laboratorio_9`.`humano` (`numeroIdentificacion`, `nombre`, `apellido`, `sexo`, `estado`, `habilitado`) VALUES (?, ?, ?, ?, 'zombie', '0')";
-        String sql2 ="INSERT INTO `laboratorio_9`.`zombie` (`victimas`, `tiempoInfectado`, `idTipoZombie`, `idVarianteVirus`, `numeroIdentificacion`) VALUES ('0', Now(), ?, ?, ?);";
+        String sql1 = "INSERT INTO humano (`numeroIdentificacion`, `nombre`, `apellido`, `sexo`, `estado`, `habilitado`) VALUES (?, ?, ?, ?, 'zombie', '0')";
+        String sql2 ="INSERT INTO zombie (`victimas`, `tiempoInfectado`, `idTipoZombie`, `idVarianteVirus`, `numeroIdentificacion`) VALUES ('0', Now(), ?, ?, ?);";
         try (Connection connection = this.obtenerConexion();
              PreparedStatement pstmt = connection.prepareStatement(sql1);) {
 
@@ -159,5 +159,4 @@ public class ZombiesDao extends BaseDao{
         }
         return hashMap;
     }
-
 }
