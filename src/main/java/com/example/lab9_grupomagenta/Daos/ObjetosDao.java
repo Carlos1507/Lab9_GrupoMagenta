@@ -211,4 +211,40 @@ public class ObjetosDao extends BaseDao{
         }
         return listaEfectividad;
     }
+
+    public void actualizar(String nombre,String peso, String idObjeto){
+
+        String sql = "UPDATE `lab9`.`objeto` SET `nombre` = ?, `masa` = ? WHERE (`idObjeto` = ?)";
+
+        try (Connection connection = this.obtenerConexion();
+             PreparedStatement pstmt = connection.prepareStatement(sql);){
+
+            pstmt.setString(1,nombre);
+            pstmt.setDouble(2,Double.parseDouble(peso));
+            pstmt.setInt(3,Integer.parseInt(idObjeto));
+            pstmt.executeUpdate(); //Es update porque es para insert, update y delete
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void actualizarVacuna(String idVacuna,int idTipoZombie,String porcentaje){
+
+        String sql = "UPDATE `lab9`.`efectividad` SET `porcentaje` = ? WHERE (`idVacuna` = ?) and (`idTipoZombie` = ?);";
+
+        try (Connection connection = this.obtenerConexion();
+             PreparedStatement pstmt = connection.prepareStatement(sql);){
+
+            pstmt.setDouble(1,Double.parseDouble(porcentaje));
+            pstmt.setInt(2,Integer.parseInt(idVacuna));
+            pstmt.setInt(3,idTipoZombie);
+            pstmt.executeUpdate(); //Es update porque es para insert, update y delete
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+
 }

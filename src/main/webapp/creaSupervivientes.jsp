@@ -36,7 +36,7 @@
         <select name="pareja" class="form-control">
             <option selected="true" disabled="disabled">Elija una opción</option>
             <% for (BSuperviviente superviviente : listaSupervivientes){%>
-                <% if (superviviente.getPareja() == null){ %>
+                <% if (superviviente.getPareja() == null && superviviente.isHabilitado()){ %>
                     <option value="<%=superviviente.getNumIdentificacion()%>">
                         <%=superviviente.getNombre()%> <%=superviviente.getApellido()%>
                     </option>

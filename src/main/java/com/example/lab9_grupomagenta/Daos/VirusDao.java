@@ -1,5 +1,6 @@
 package com.example.lab9_grupomagenta.Daos;
 
+import com.example.lab9_grupomagenta.Beans.BObjeto;
 import com.example.lab9_grupomagenta.Beans.BVariante;
 import com.example.lab9_grupomagenta.Beans.BVirus;
 
@@ -17,7 +18,7 @@ public class VirusDao extends BaseDao{
                 BVirus bVirus = new BVirus();
                 bVirus.setIdVirus(rs.getInt(1));
                 bVirus.setNombre(rs.getString(2));
-                bVirus.setCasosEncontrados(rs.getInt(3));
+                bVirus.setCasosEncontrados(buscarCasosEncontrados(rs.getInt(1))); //
                 listaVir.add(bVirus);
             }
         } catch (SQLException e){
@@ -25,6 +26,31 @@ public class VirusDao extends BaseDao{
         }
         return listaVir;
     }
+
+    public int buscarCasosEncontrados(int idVirus){
+        int numCasos = 0;
+
+        String sql = "select count(*) from zombie z \n" +
+                "inner join variantevirus vv on (z.idVarianteVirus = vv.idVarianteVirus)\n" +
+                "inner join virus vi on (vi.idVirus = vv.idVirus)\n" +
+                "where vi.idVirus = ?\n" +
+                "group by vi.idVirus";
+
+        try (Connection connection = this.obtenerConexion();
+             PreparedStatement pstmt = connection.prepareStatement(sql);){
+            pstmt.setInt(1,idVirus);
+
+            try (ResultSet rs = pstmt.executeQuery();){
+                if (rs.next()){
+                    numCasos = rs.getInt(1);
+                }
+            }
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+        return numCasos;
+    }
+
 
     public ArrayList<BVariante> listarVariante(){
         ArrayList<BVariante> listaVari = new ArrayList<>();
@@ -47,15 +73,14 @@ public class VirusDao extends BaseDao{
     }
 
     public void crearVirus(String nombre){
-        this.crearVariante(nombre + "v1",2);
 
-        String sql = "INSERT INTO `lab9`.`virus` (`nombre`, `casosEncontrados`) VALUES (?, ?);";
+        String sql = "INSERT INTO virus (`nombre`, `casosEncontrados`) VALUES (?, ?);";
 
         try (Connection connection = this.obtenerConexion();
              PreparedStatement pstmt = connection.prepareStatement(sql);){
 
             pstmt.setString(1,nombre);
-            pstmt.setInt(2,1000);
+            pstmt.setInt(2,0); //Al crear un virus no necesarimente hay infectados ya
             pstmt.executeUpdate(); //Es update porque es para insert, update y delete
 
         } catch (SQLException e) {
@@ -65,7 +90,7 @@ public class VirusDao extends BaseDao{
 
     public void crearVariante(String nombre, int idVirus){
 
-        String sql = "INSERT INTO `lab9`.`variantevirus` (`nombre`, `gradoInfectividad`, `idVirus`) VALUES (?, ?, ?);";
+        String sql = "INSERT INTO variantevirus (`nombre`, `gradoInfectividad`, `idVirus`) VALUES (?, ?, ?);";
 
         try (Connection connection = this.obtenerConexion();
              PreparedStatement pstmt = connection.prepareStatement(sql);){

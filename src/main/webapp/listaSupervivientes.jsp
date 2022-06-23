@@ -79,7 +79,10 @@
                         <img ml="30" height="30" width="30" src="https://cdn-icons-png.flaticon.com/512/1083/1083099.png">
                     </a>
                     <a href="<%= request.getContextPath()%>/SupervivientesServlet?action=eliminar&id=<%=superviviente.getIdSuperviviente()%>">
-                        <img height="30" width="30" src="https://cdn-icons-png.flaticon.com/512/458/458594.png">
+                        <img ml="30" height="30" width="30" src="https://cdn-icons-png.flaticon.com/512/458/458594.png">
+                    </a>
+                    <a href="<%=request.getContextPath()%>/SupervivientesServlet?action=inventario&id=<%=superviviente.getIdSuperviviente()%>">
+                        <img height="30" width="30" src="https://img2.freepng.es/20181129/xgl/kisspng-computer-icons-scalable-vector-graphics-portable-n-rookie-futures-inventory-management-svg-png-icon-f-5bff807cb1b119.1693769815434712287278.jpg">
                     </a>
                 </td>
             </tr>

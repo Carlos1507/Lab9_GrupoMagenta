@@ -17,7 +17,7 @@ public class SupervivienteDao extends BaseDao{
         }
         try(Connection conn = this.obtenerConexion();
             Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery(sql);){
+            ResultSet rs = stmt.executeQuery(sql)){
             while(rs.next()){
                 BSuperviviente superviviente = new BSuperviviente();
                 int idSuperviviente = rs.getInt(1);
@@ -100,12 +100,47 @@ public class SupervivienteDao extends BaseDao{
         return peso;
     }
     public BSuperviviente obtenerSuperviviente(int idSuperv){
-        BSuperviviente superviviente = new BSuperviviente();
-
+        BSuperviviente superviviente = null;
+        String sql = "SELECT * FROM superviviente where idSuperviviente=?";
+        try (Connection conn = this.obtenerConexion();
+            PreparedStatement pstmt = conn.prepareStatement(sql)){
+            pstmt.setInt(1, idSuperv);
+            try(ResultSet rs = pstmt.executeQuery();){
+                if(rs.next()){
+                    superviviente = new BSuperviviente();
+                    superviviente.setIdSuperviviente(idSuperv);
+                    superviviente.setPeso(rs.getDouble(2));
+                    superviviente.setFuerza(rs.getDouble(3));
+                    superviviente.setPesoCargado(obtenerPesoCargado(idSuperv));
+                    String numIdentif = rs.getString(5);
+                    superviviente.setNumIdentificacion(numIdentif);
+                    BHumano humano = obtenerDatosHumanoSuperv(numIdentif);
+                    superviviente.setNombre(humano.getNombre());
+                    superviviente.setApellido(humano.getApellido());
+                    superviviente.setSexo(humano.getSexo());
+                    superviviente.setHabilitado(humano.isHabilitado());
+                    String parejaID = rs.getString(6);
+                    if(parejaID != null){
+                        String identificacionPareja = obtenerIdentificacion(parejaID);
+                        BHumano pareja = obtenerDatosHumanoSuperv(identificacionPareja);
+                        superviviente.setPareja(pareja);
+                    }
+                }
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
         return superviviente;
     }
-    public void eliminarSuperviviente(int idSuperv){
-
+    public void eliminarSuperviviente(String numID){
+        String sql = "UPDATE humano set habilitado=false where numeroIdentificacion=?";
+        try(Connection conn = this.obtenerConexion();
+        PreparedStatement pstmt = conn.prepareStatement(sql)){
+            pstmt.setString(1, numID);
+            pstmt.executeUpdate();
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
     }
     public void crearSuperviviente(String nombre, String apellido, double peso, double fuerza, String sexo, int pareja, String numIdentificacion){
         String sql = "INSERT INTO humano VALUES ( ? , ? ,?, ?, ?,?)";
@@ -129,7 +164,7 @@ public class SupervivienteDao extends BaseDao{
     }
     public void agregaSuperviviente(double peso, double fuerza, int pareja, String numIdentificacion){
         System.out.println("parejaselect: "+pareja);
-        String sql=null;
+        String sql;
         if (pareja ==0 ){
             sql= "INSERT INTO superviviente (peso, fuerza, pesoCargado, numeroIdentificacion) VALUES (?, ?, ?, ?)";
         }else{
@@ -167,7 +202,7 @@ public class SupervivienteDao extends BaseDao{
         try(Connection conn = this.obtenerConexion();
             PreparedStatement pstmt = conn.prepareStatement(sql)){
             pstmt.setString(1,numIdentificacion);
-            try(ResultSet rs = pstmt.executeQuery();){
+            try(ResultSet rs = pstmt.executeQuery()){
                 if(rs.next()){
                     idSuperv = rs.getInt(1);
                 }
@@ -177,5 +212,21 @@ public class SupervivienteDao extends BaseDao{
         }
         return idSuperv;
 
+    }
+    public boolean identificacionUsada(String codigo){
+        boolean IDusado=false;
+        String sql = "Select * from humano where numeroIdentificacion=?";
+        try(Connection conn = this.obtenerConexion();
+            PreparedStatement pstmt = conn.prepareStatement(sql)){
+            pstmt.setString(1, codigo);
+            try(ResultSet rs = pstmt.executeQuery()){
+                if(rs.next()){
+                    IDusado = true;
+                }
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return IDusado;
     }
 }
