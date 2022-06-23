@@ -74,7 +74,7 @@ public class VirusDao extends BaseDao{
 
     public void crearVirus(String nombre){
 
-        String sql = "INSERT INTO `lab9`.`virus` (`nombre`, `casosEncontrados`) VALUES (?, ?);";
+        String sql = "INSERT INTO virus (`nombre`, `casosEncontrados`) VALUES (?, ?);";
 
         try (Connection connection = this.obtenerConexion();
              PreparedStatement pstmt = connection.prepareStatement(sql);){
@@ -90,7 +90,7 @@ public class VirusDao extends BaseDao{
 
     public void crearVariante(String nombre, int idVirus){
 
-        String sql = "INSERT INTO `lab9`.`variantevirus` (`nombre`, `gradoInfectividad`, `idVirus`) VALUES (?, ?, ?);";
+        String sql = "INSERT INTO variantevirus (`nombre`, `gradoInfectividad`, `idVirus`) VALUES (?, ?, ?);";
 
         try (Connection connection = this.obtenerConexion();
              PreparedStatement pstmt = connection.prepareStatement(sql);){
